@@ -1,0 +1,351 @@
+JFDML JFormDesigner: "8.0.0.0.194" Java: "17.0.5" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "this"
+			"minimumSize": new java.awt.Dimension( 600, 480 )
+			"title": "学生管理系统"
+			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+				name: "tabbedPane1"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "show"
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "show_id_up"
+						"text": "按照学号升序排列"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 50
+						"y": 25
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "show_id_down"
+						"text": "按照学号降序排列"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 380
+						"y": 25
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "flush_information"
+						"text": "刷新"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 240
+						"y": 25
+					} )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane1"
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "show_all"
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 40
+						"y": 100
+						"width": 465
+						"height": 285
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "显示学生信息"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "select"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label6"
+						"text": "id"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 40
+						"y": 20
+						"width": 45
+						"height": 25
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label7"
+						"text": "姓名"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 275
+						"y": 25
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "select_id"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 105
+						"y": 20
+						"width": 65
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "select_id_the"
+						"text": "通过学号精确查找"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 170
+						"y": 80
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "select_id_quzzy"
+						"text": "通过学号模糊查找"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 20
+						"y": 80
+						"width": 135
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "select_name_the"
+						"text": "通过姓名精确查找"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 310
+						"y": 80
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "select_name_quzzy"
+						"text": "通过姓名模糊查找"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 450
+						"y": 80
+					} )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane4"
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "students_part"
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 35
+						"y": 140
+						"width": 530
+						"height": 220
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "select_name"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 365
+						"y": 20
+						"width": 80
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "查找学生"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "input"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label1"
+						"text": "id"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 45
+						"y": 30
+						"width": 55
+						"height": 30
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": "姓名"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 45
+						"y": 105
+						"width": 40
+						"height": 25
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "高数"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 45
+						"y": 180
+						"width": 35
+						"height": 20
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label4"
+						"text": "英语"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 45
+						"y": 260
+						"width": 40
+						"height": 30
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label5"
+						"text": "离散"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 40
+						"y": 340
+						"width": 33
+						"height": 27
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "input_id"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 125
+						"y": 35
+						"width": 115
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "input_name"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 125
+						"y": 110
+						"width": 115
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "input_math"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 125
+						"y": 175
+						"width": 115
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "input_english"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 125
+						"y": 265
+						"width": 115
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "input_discrete"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 125
+						"y": 345
+						"width": 110
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "input_button"
+						"text": "提交录入信息"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 350
+						"y": 40
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "search_imformation"
+						"text": "选择文件提交(.dox)"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 340
+						"y": 170
+					} )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane2"
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "wrong_information"
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 280
+						"y": 230
+						"width": 270
+						"height": 135
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "录入学生信息"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "change"
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane3"
+						add( new FormComponent( "javax.swing.JList" ) {
+							name: "change_list"
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 40
+						"y": 125
+						"width": 85
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "delete_button"
+						"text": "删除"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 455
+						"y": 55
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "change_button"
+						"text": "修改"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 455
+						"y": 140
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label10"
+						"text": "姓名"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 200
+						"y": 65
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "change_name"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 270
+						"y": 60
+						"width": 90
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label11"
+						"text": "高数"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 200
+						"y": 125
+						"width": 35
+						"height": 22
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "change_math"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 270
+						"y": 120
+						"width": 95
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label12"
+						"text": "英语"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 195
+						"y": 205
+						"width": 25
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "change_english"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 270
+						"y": 195
+						"width": 95
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label13"
+						"text": "离散"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 195
+						"y": 275
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "change_discrete"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 270
+						"y": 265
+						"width": 90
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "change_flush"
+						"text": "刷新"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 45
+						"y": 35
+					} )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane5"
+						add( new FormComponent( "javax.swing.JTextArea" ) {
+							name: "change_susses"
+						} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 440
+						"y": 210
+						"width": 115
+						"height": 150
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "修改学生信息"
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 0
+				"y": 0
+				"width": 590
+				"height": 450
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 5, 0 )
+			"size": new java.awt.Dimension( 590, 480 )
+		} )
+	}
+}
