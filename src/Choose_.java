@@ -452,7 +452,7 @@ public class Choose_ extends JFrame {
                 input_button.setBounds(new Rectangle(new Point(350, 40), input_button.getPreferredSize()));
 
                 //---- search_imformation ----
-                search_imformation.setText("\u9009\u62e9\u6587\u4ef6\u63d0\u4ea4(.dox)");
+                search_imformation.setText("\u9009\u62e9\u6587\u4ef6\u63d0\u4ea4(.txt)");
                 input.add(search_imformation);
                 search_imformation.setBounds(new Rectangle(new Point(340, 170), search_imformation.getPreferredSize()));
 
