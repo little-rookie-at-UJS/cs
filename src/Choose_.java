@@ -24,13 +24,17 @@ public class Choose_ extends JFrame {
         show_id_up.addActionListener(e -> {
             binary_tree.initList_up();
             init_table(binary_tree.returnList());
+            binary_tree.write_up();
+
         });
         flush_information.addActionListener(e -> {
             init_table(binary_tree.returnList());
+            binary_tree.write_up();
         });
         show_id_down.addActionListener(e -> {
             binary_tree.initList_down();
             init_table(binary_tree.returnList());
+            binary_tree.write_up();
         });
         select_id_the.addActionListener(e -> {
             students_part.setText("");
@@ -125,11 +129,7 @@ public class Choose_ extends JFrame {
             }else if(!file.getName().matches(".*\\.txt")){
                wrong_information.setText("文件格式不正确");
              }else {
-                try {
-                    binary_tree.add_file(file);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
+                binary_tree.add_file(file);
                 wrong_information.setText("导入成功\n");
                 LinkedList<String> students=binary_tree.getWrong_list();
                 if (students.size()!=0){
@@ -142,6 +142,7 @@ public class Choose_ extends JFrame {
             binary_tree.write_up();
         });
         change_flush.addActionListener(e -> {
+            binary_tree.initList_up();
 //            获取树的所有id
             LinkedList<Students>List=binary_tree.returnList();
             LinkedList<String> id_list=new LinkedList<>();
