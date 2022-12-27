@@ -354,7 +354,7 @@ public class Binary_tree {
 //            temp = temp.getRight();
 //        }
 //    }
-    return studentsLinkedList;
+    return studentsLinkedLists;
 }
 //    通过姓名模糊查找
     public LinkedList<Students> search_name_fuzzy(String name){
@@ -384,7 +384,7 @@ public class Binary_tree {
 //                temp = temp.getRight();
 //            }
 //        }
-        return studentsLinkedList;
+        return studentsLinkedLists;
     }
     public LinkedList<Students> returnList(){
         return studentsLinkedList;
