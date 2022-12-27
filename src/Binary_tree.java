@@ -100,6 +100,14 @@ public class Binary_tree {
         else
             return false;
     }
+    boolean equals(String str,Students students){
+//        如果字符串和节点相等，返回true
+        if(str.equals(students.getId()))
+            return true;
+//        如果字符串和节点不相等，返回false
+        else
+            return false;
+    }
 //删除节点
     public void delete(String id){
 //      创建临时节点
@@ -290,77 +298,92 @@ public class Binary_tree {
 //    通过学号模糊查找
     public LinkedList<Students> search_id_fuzzy(String id){
 //       初始化链表
-        LinkedList<Students> studentsLinkedList = new LinkedList<>();
-//        定义栈 模拟递归
-        Stack<Node> stack = new Stack<>();
-//        临时节点
-        Node temp = root;
-        while (temp != null || !stack.isEmpty()) {
-//            如果临时节点不为空，就把临时节点压入栈，临时节点设置为临时节点的右节点
-            while (temp != null) {
-                stack.push(temp);
-                temp = temp.getLeft();
-            }
-            if (!stack.isEmpty()) {
-//                如果栈不为空，就把栈顶元素弹出，把临时节点设置为栈顶元素，把临时节点的左节点设置为临时节点
-                temp = stack.pop();
-                if (temp.contain_Id(id)) {
-//                    如果临时节点的学号包含要查找的学号，就把临时节点的学生加入链表
-                    studentsLinkedList.add(temp.getStudents());
-                }
-                temp = temp.getRight();
+        LinkedList<Students> studentsLinkedLists = new LinkedList<>();
+        for(Students students : studentsLinkedList){
+            if(students.contain_Id(id)){
+                studentsLinkedLists.add(students);
             }
         }
-        return studentsLinkedList;
+////        定义栈 模拟递归
+//        Stack<Node> stack = new Stack<>();
+////        临时节点
+//        Node temp = root;
+//        while (temp != null || !stack.isEmpty()) {
+////            如果临时节点不为空，就把临时节点压入栈，临时节点设置为临时节点的右节点
+//            while (temp != null) {
+//                stack.push(temp);
+//                temp = temp.getLeft();
+//            }
+//            if (!stack.isEmpty()) {
+////                如果栈不为空，就把栈顶元素弹出，把临时节点设置为栈顶元素，把临时节点的左节点设置为临时节点
+//                temp = stack.pop();
+//                if (temp.contain_Id(id)) {
+////                    如果临时节点的学号包含要查找的学号，就把临时节点的学生加入链表
+//                    studentsLinkedList.add(temp.getStudents());
+//                }
+//                temp = temp.getRight();
+//            }
+//        }
+        return studentsLinkedLists;
     }
 //    通过姓名精确查找
     public LinkedList<Students> search_name_the(String name){
 //       初始化链表
-    LinkedList<Students> studentsLinkedList = new LinkedList<>();
-//        定义栈 模拟递归
-    Stack<Node> stack = new Stack<>();
-//        临时节点
-    Node temp = root;
-    while (temp != null || !stack.isEmpty()) {
-//            如果临时节点不为空，就把临时节点压入栈，临时节点设置为临时节点的右节点
-        while (temp != null) {
-            stack.push(temp);
-            temp = temp.getLeft();
-        }
-//        如果栈不为空，就把栈顶元素弹出，把临时节点设置为栈顶元素，把临时节点的左节点设置为临时节点
-        if (!stack.isEmpty()) {
-            temp = stack.pop();
-            if (equals(name,temp)) {
-                studentsLinkedList.add(temp.getStudents());
-            }
-            temp = temp.getRight();
+    LinkedList<Students> studentsLinkedLists = new LinkedList<>();
+    for (Students students : studentsLinkedList) {
+        if (equals(name,students)) {
+            studentsLinkedLists.add(students);
         }
     }
+////        定义栈 模拟递归
+//    Stack<Node> stack = new Stack<>();
+////        临时节点
+//    Node temp = root;
+//    while (temp != null || !stack.isEmpty()) {
+////            如果临时节点不为空，就把临时节点压入栈，临时节点设置为临时节点的右节点
+//        while (temp != null) {
+//            stack.push(temp);
+//            temp = temp.getLeft();
+//        }
+////        如果栈不为空，就把栈顶元素弹出，把临时节点设置为栈顶元素，把临时节点的左节点设置为临时节点
+//        if (!stack.isEmpty()) {
+//            temp = stack.pop();
+//            if (equals(name,temp)) {
+//                studentsLinkedList.add(temp.getStudents());
+//            }
+//            temp = temp.getRight();
+//        }
+//    }
     return studentsLinkedList;
 }
 //    通过姓名模糊查找
     public LinkedList<Students> search_name_fuzzy(String name){
 //       初始化链表
-        LinkedList<Students> studentsLinkedList = new LinkedList<>();
-//        定义栈 模拟递归
-        Stack<Node> stack = new Stack<>();
-        Node temp = root;
-//        临时节点
-        while (temp != null || !stack.isEmpty()) {
-//            如果临时节点不为空，就把临时节点压入栈，临时节点设置为临时节点的右节点
-            while (temp != null) {
-                stack.push(temp);
-                temp = temp.getLeft();
-            }
-            if (!stack.isEmpty()) {
-//                如果栈不为空，就把栈顶元素弹出，把临时节点设置为栈顶元素，把临时节点的左节点设置为临时节点
-                temp = stack.pop();
-                if (temp.contain_Name(name)) {
-                    studentsLinkedList.add(temp.getStudents());
-                }
-                temp = temp.getRight();
+        LinkedList<Students> studentsLinkedLists = new LinkedList<>();
+        for (Students students : studentsLinkedList) {
+            if (students.contain_Name(name)) {
+                studentsLinkedLists.add(students);
             }
         }
+////        定义栈 模拟递归
+//        Stack<Node> stack = new Stack<>();
+//        Node temp = root;
+////        临时节点
+//        while (temp != null || !stack.isEmpty()) {
+////            如果临时节点不为空，就把临时节点压入栈，临时节点设置为临时节点的右节点
+//            while (temp != null) {
+//                stack.push(temp);
+//                temp = temp.getLeft();
+//            }
+//            if (!stack.isEmpty()) {
+////                如果栈不为空，就把栈顶元素弹出，把临时节点设置为栈顶元素，把临时节点的左节点设置为临时节点
+//                temp = stack.pop();
+//                if (temp.contain_Name(name)) {
+//                    studentsLinkedList.add(temp.getStudents());
+//                }
+//                temp = temp.getRight();
+//            }
+//        }
         return studentsLinkedList;
     }
     public LinkedList<Students> returnList(){

@@ -481,11 +481,11 @@ public class Choose_ extends JFrame {
             }
             tabbedPane1.addTab("\u5f55\u5165\u5b66\u751f\u4fe1\u606f", input);
 
-            //======== change ========
+
             {
                 change.setLayout(null);
 
-                //======== scrollPane3 ========
+
                 {
                     scrollPane3.setViewportView(change_list);
                 }
@@ -578,11 +578,11 @@ public class Choose_ extends JFrame {
         }
         pack();
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
+
     }
 
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
+
     private JTabbedPane tabbedPane1;
     private JPanel show;
     private JButton show_id_up;
@@ -632,5 +632,5 @@ public class Choose_ extends JFrame {
     private JButton change_flush;
     private JScrollPane scrollPane5;
     private JTextArea change_susses;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
+
 }
