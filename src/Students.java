@@ -86,6 +86,17 @@ public class Students {
 //        重写toString方法
       return "学号："+id+" 姓名："+name+" 高数："+math+" 英语："+english+" 离散："+discrete+" 总分："+total;
     }
+   public int cmp(Students s) {
+//        比较两个学生的id的大小
+        if (this.id.compareTo(s.id) > 0) {
+            return 1;
+        } else if(this.id.compareTo(s.id) < 0) {
+            return -1;
+        }else {
+            return 0;
+        }
+    }
+  }
 
 
-}
+

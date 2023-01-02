@@ -13,6 +13,7 @@ import java.io.*;
 public class Choose_ extends JFrame {
     String student_id;
     private Binary_tree binary_tree=new Binary_tree(new File("StudentFile.txt"));
+    private B_T b_t=new B_T(5,"StudentFile.txt");
 
     public Choose_() {
         initComponents();
@@ -20,48 +21,40 @@ public class Choose_ extends JFrame {
     }
 
     private void add_Actionlistener(){
-
         show_id_up.addActionListener(e -> {
-            binary_tree.initList_up();
-            init_table(binary_tree.returnList());
-            binary_tree.write_up();
-
+            init_table(b_t.print());
         });
         flush_information.addActionListener(e -> {
-            init_table(binary_tree.returnList());
-            binary_tree.write_up();
+            init_table(b_t.print());
         });
         show_id_down.addActionListener(e -> {
-            binary_tree.initList_down();
-            init_table(binary_tree.returnList());
-            binary_tree.write_up();
+            init_table(b_t.print_d());
         });
         select_id_the.addActionListener(e -> {
-            students_part.setText("");
             String id=select_id.getText();
-           Students students= binary_tree.search_id_the(id);
-           if (students==null){
-              students_part.setText("没有该学生");
-           }else {
-               students_part.setText(students.toString());
-           }
+            Students students=b_t.searchById(id);
+            if(students==null){
+                JOptionPane.showMessageDialog(null,"没有找到");
+            }else{
+                students_part.setText(students.toString());
+            }
         });
-        select_id_quzzy.addActionListener(e -> {
+        select_id_quzzy.addActionListener(e ->{
             students_part.setText("");
             String id=select_id.getText();
-            LinkedList<Students> students=binary_tree.search_id_fuzzy(id);
-            if (students.size()==0||id.equals("")){
-                students_part.setText("没有该学生");
-            }else {
+            LinkedList<Students> students=b_t.searchByIdLike(id);
+            if(students.size()==0){
+                JOptionPane.showMessageDialog(null,"没有找到");}
+            else{
                 for (Students student : students) {
                     students_part.append(student.toString()+"\n");
                 }
             }
-        });
+        } );
         select_name_the.addActionListener(e -> {
             students_part.setText("");
             String name=select_name.getText();
-            LinkedList<Students> students=binary_tree.search_name_the(name);
+            LinkedList<Students> students=b_t.searchByName(name);
             if (students.size()==0){
                 students_part.setText("没有该学生");
             }else {
@@ -73,7 +66,7 @@ public class Choose_ extends JFrame {
         select_name_quzzy.addActionListener(e -> {
             students_part.setText("");
             String name=select_name.getText();
-            LinkedList<Students> students=binary_tree.search_name_fuzzy(name);
+            LinkedList<Students> students=b_t.searchByNameLike(name);
             if (students.size()==0||name.equals("")){
                 students_part.setText("没有该学生");
             }else {
@@ -110,14 +103,14 @@ public class Choose_ extends JFrame {
             int english=Integer.parseInt(input_english.getText());
             int discrete=Integer.parseInt(input_discrete.getText());
             Students students=new Students(id,name,math,english,discrete);
-            if(binary_tree.search_id_the(id)==null) {
-                binary_tree.add(students);
+            if(b_t.searchById(id)==null) {
+                b_t.insert(students);
                 wrong_information.setText("添加成功");
             }
             else {
                 wrong_information.setText("该学生已存在");
             }
-            binary_tree.write_up();
+            b_t.write_up();
         });
         search_imformation.addActionListener(e -> {
             JFileChooser jFileChooser=new JFileChooser();
@@ -129,9 +122,9 @@ public class Choose_ extends JFrame {
             }else if(!file.getName().matches(".*\\.txt")){
                wrong_information.setText("文件格式不正确");
              }else {
-                binary_tree.add_file(file);
+                b_t.readfile(file);
                 wrong_information.setText("导入成功\n");
-                LinkedList<String> students=binary_tree.getWrong_list();
+                LinkedList<String> students=b_t.getWrong_list();
                 if (students.size()!=0){
                     wrong_information.append("以下学生信息有误\n");
                     for (String student : students) {
@@ -139,12 +132,12 @@ public class Choose_ extends JFrame {
                     }
                 }
             }
-            binary_tree.write_up();
+            b_t.write_up();
         });
         change_flush.addActionListener(e -> {
-            binary_tree.initList_up();
+//            binary_tree.initList_up();
 //            获取树的所有id
-            LinkedList<Students>List=binary_tree.returnList();
+            LinkedList<Students>List=b_t.print();
             LinkedList<String> id_list=new LinkedList<>();
             for (Students students : List) {
                 id_list.add(students.getId());
@@ -172,21 +165,21 @@ public class Choose_ extends JFrame {
         delete_button.addActionListener(e -> {
             if(student_id==null){
                 change_susses.setText("未选择学生");
-            }else if(binary_tree.search_id_the(student_id)==null){
+            }else if(b_t.searchById(student_id)==null){
                 change_susses.setText("该学生不存在");
             }else {
-                binary_tree.delete(student_id);
+                b_t.delete(b_t.searchById(student_id));
                 change_susses.setText("删除成功");
             }
-            binary_tree.write_up();
+            b_t.write_up();
         });
         change_button.addActionListener(e->{
             if(student_id==null){
                 change_susses.setText("未选择学生");
-            }else if(binary_tree.search_id_the(student_id)==null){
+            }else if(b_t.searchById(student_id)==null){
                 change_susses.setText("该学生不存在");
             }else{
-                Students students=binary_tree.search_id_the(student_id);
+                Students students=b_t.searchById(student_id);
                 String name=change_name.getText();
                 String math=change_math.getText();
                 String english=change_english.getText();
@@ -213,10 +206,12 @@ public class Choose_ extends JFrame {
                 students.setDiscrete(Integer.parseInt(discrete));
                 change_susses.setText("修改成功");
             }
-            binary_tree.write_up();
+            b_t.write_up();
         });
     }
     void init_table(LinkedList<Students>list){
+        double max_math=0,max_english=0,max_discrete=0,max_total=0;
+        double sum_math=0,sum_english=0,sum_discrete=0,sum_total=0;
         String[] columnNames = {"学号", "姓名", "高数", "英语", "离散", "总分"};
         Object[][] data = new Object[list.size()+2][6];
         for (int i = 0; i < list.size(); i++) {
@@ -226,19 +221,35 @@ public class Choose_ extends JFrame {
             data[i][3] = list.get(i).getEnglish();
             data[i][4] = list.get(i).getDiscrete();
             data[i][5] = list.get(i).getTotal();
+            sum_math+=list.get(i).getMath();
+            sum_english+=list.get(i).getEnglish();
+            sum_discrete+=list.get(i).getDiscrete();
+            sum_total+=list.get(i).getTotal();
+            if (list.get(i).getMath()>max_math){
+                max_math=list.get(i).getMath();
+            }
+            if (list.get(i).getEnglish()>max_english){
+                max_english=list.get(i).getEnglish();
+            }
+            if (list.get(i).getDiscrete()>max_discrete){
+                max_discrete=list.get(i).getDiscrete();
+            }
+            if (list.get(i).getTotal()>max_total){
+                max_total=list.get(i).getTotal();
+            }
         }
         data[list.size()][0] = "平均分";
         data[list.size()][1] = "";
-        data[list.size()][2] = binary_tree.getAverage_math();
-        data[list.size()][3] = binary_tree.getAverage_english();
-        data[list.size()][4] = binary_tree.getAverage_discrete();
-        data[list.size()][5] = binary_tree.getAverage_all();
+        data[list.size()][2] = sum_math/list.size();
+        data[list.size()][3] = sum_english/list.size();
+        data[list.size()][4] = sum_discrete/list.size();
+        data[list.size()][5] = sum_total/list.size();
         data[list.size()+1][0] = "最高分";
-        data[list.size()+1][2] = binary_tree.getMax_math();
-        data[list.size()+1][3] = binary_tree.getMax_english();
-        data[list.size()+1][4] = binary_tree.getMax_discrete();
-        data[list.size()+1][5] = binary_tree.getMax_all();
-
+        data[list.size()+1][1] = "";
+        data[list.size()+1][2] = max_math;
+        data[list.size()+1][3] = max_english;
+        data[list.size()+1][4] = max_discrete;
+        data[list.size()+1][5] = max_total;
         show_all = new JTable(data, columnNames);
         scrollPane1.setViewportView(show_all);
     }
